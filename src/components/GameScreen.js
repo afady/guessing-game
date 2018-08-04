@@ -6,7 +6,7 @@ import GameButton from './GameButton';
 
 import { alphabet } from '../utils/constants';
 
-class PlayGame extends Component {
+class GameScreen extends Component {
   componentWillMount() {
     this.wordToGuessArray = this.props.wordToGuess.split('');
   }
@@ -19,7 +19,7 @@ class PlayGame extends Component {
     });
   }
 
-  renderWord() {
+  renderWordTiles() {
     const { lettersGuessed } = this.props;
 
     return this.wordToGuessArray.map((letter, index) => {
@@ -42,7 +42,7 @@ class PlayGame extends Component {
       <div>
         <div className="row">
           <div className="col s12">
-            <div className="word-tile-wrap">{this.renderWord()}</div>
+            <div className="word-tile-wrap">{this.renderWordTiles()}</div>
           </div>
         </div>
         <div className="row">{this.renderGameButtons()}</div>
@@ -62,4 +62,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   actions
-)(PlayGame);
+)(GameScreen);
