@@ -5,7 +5,13 @@ import GameScreen from './GameScreen';
 
 class App extends Component {
   renderScreen() {
-    if (this.props.isPlaying) {
+    const { isPlaying, gameOver } = this.props;
+
+    if (gameOver) {
+      return <div>Game over!</div>;
+    }
+
+    if (isPlaying) {
       return <GameScreen />;
     }
 
@@ -19,7 +25,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    isPlaying: state.game.isPlaying
+    isPlaying: state.game.isPlaying,
+    gameOver: state.game.gameOver,
+    hasWinner: state.game.hasWinner
   };
 }
 

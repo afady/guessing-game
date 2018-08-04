@@ -1,28 +1,65 @@
-import { SETUP_GAME, MAKE_GUESS } from '../actions/types';
+import { SETUP_GAME, MAKE_GUESS, CHECK_FOR_ENDGAME } from '../actions/types';
 
 const initialState = {
-  wordToGuess: '',
+  wordToGuess: 'TESTER',
   numberOfGuesses: 6,
-  isPlaying: false,
+  isPlaying: true,
+  hasWinner: false,
+  gameOver: false,
   lettersGuessed: ['']
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SETUP_GAME:
+    case SETUP_GAME: {
       return {
         ...state,
         wordToGuess: action.payload.wordToGuess.trim().toUpperCase(),
         numberOfGuesses: action.payload.numberOfGuesses,
         isPlaying: true
       };
+    }
 
-    case MAKE_GUESS:
+    case MAKE_GUESS: {
+      const letter = action.payload;
+      const { wordToGuess } = state;
+
+      let { numberOfGuesses } = state;
+
+      // if guess was incorrect, decrement number of guesses
+      if (wordToGuess.split('').indexOf(letter) < 0) {
+        numberOfGuesses--;
+      }
+
       return {
         ...state,
-        lettersGuessed: [...state.lettersGuessed, action.payload],
-        numberOfGuesses: state.numberOfGuesses - 1
+        lettersGuessed: [...state.lettersGuessed, letter],
+        numberOfGuesses
       };
+    }
+
+    case CHECK_FOR_ENDGAME: {
+      // check if word has been guessed
+      const { lettersGuessed, wordToGuess, numberOfGuesses } = state;
+
+      let hasWinner = true;
+
+      wordToGuess.split('').map(letter => {
+        if (lettersGuessed.indexOf(letter) < 0) {
+          hasWinner = false;
+        }
+
+        return null;
+      });
+
+      const gameOver = hasWinner || numberOfGuesses <= 0;
+
+      return {
+        ...state,
+        hasWinner,
+        gameOver
+      };
+    }
 
     default:
       return state;
