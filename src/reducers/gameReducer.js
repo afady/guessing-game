@@ -1,16 +1,17 @@
 import { SETUP_GAME } from '../actions/types';
 
 const initialState = {
-  wordToGuess: '',
+  wordToGuess: 'TEST',
   numberOfGuesses: 6,
-  isPlaying: false
+  isPlaying: true,
+  playerGuess: ''
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case SETUP_GAME:
       return {
-        wordToGuess: action.payload.wordToGuess,
+        wordToGuess: action.payload.wordToGuess.trim(),
         numberOfGuesses: action.payload.numberOfGuesses,
         isPlaying: true
       };
