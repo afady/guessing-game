@@ -11,6 +11,7 @@ class App extends Component {
 
     return <NewGameForm />;
   }
+
   render() {
     return <div className="container">{this.renderScreen()}</div>;
   }
