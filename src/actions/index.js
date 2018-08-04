@@ -8,8 +8,6 @@ export const setupGame = options => {
 };
 
 export const makeGuess = letterGuessed => {
-  console.log('make gyuess');
-
   return {
     type: MAKE_GUESS,
     payload: letterGuessed

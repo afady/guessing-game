@@ -12,10 +12,19 @@ class GameScreen extends Component {
   }
 
   renderGameButtons() {
-    const { makeGuess } = this.props;
+    const { makeGuess, lettersGuessed } = this.props;
 
     return alphabet.map(letter => {
-      return <GameButton letter={letter} key={letter} makeGuess={makeGuess} />;
+      let hasBeenGuessed = lettersGuessed.indexOf(letter) >= 0;
+
+      return (
+        <GameButton
+          letter={letter}
+          key={letter}
+          makeGuess={makeGuess}
+          disabled={hasBeenGuessed}
+        />
+      );
     });
   }
 
