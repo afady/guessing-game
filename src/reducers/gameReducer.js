@@ -6,9 +6,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  wordToGuess: 'TESTER',
+  wordToGuess: '',
   numberOfGuesses: 6,
-  isPlaying: true,
+  isPlaying: false,
   hasWinner: false,
   gameOver: false,
   lettersGuessed: ['']
@@ -66,7 +66,7 @@ export default function(state = initialState, action) {
     }
 
     case START_NEW_GAME: {
-      return { initialState };
+      return initialState;
     }
 
     default:
