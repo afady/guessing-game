@@ -1,4 +1,9 @@
-import { SETUP_GAME, MAKE_GUESS, CHECK_FOR_ENDGAME } from './types';
+import {
+  SETUP_GAME,
+  MAKE_GUESS,
+  CHECK_FOR_ENDGAME,
+  START_NEW_GAME
+} from './types';
 
 export const setupGame = options => {
   return {
@@ -17,6 +22,13 @@ export const makeGuess = letterGuessed => {
 export const checkForEndGame = () => {
   return {
     type: CHECK_FOR_ENDGAME,
+    payload: null
+  };
+};
+
+export const startNewGame = () => {
+  return {
+    type: START_NEW_GAME,
     payload: null
   };
 };

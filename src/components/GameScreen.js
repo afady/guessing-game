@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-
-import GameButton from './GameButton';
-
 import { alphabet } from '../utils/constants';
+import LetterButton from './LetterButton';
+import NewGameButton from './NewGameButton';
 
 class GameScreen extends Component {
   componentWillMount() {
     this.wordToGuessArray = this.props.wordToGuess.split('');
   }
 
-  renderGameButtons() {
+  renderLetterButtons() {
     const { makeGuess, lettersGuessed, checkForEndGame } = this.props;
 
     return alphabet.map(letter => {
       let hasBeenGuessed = lettersGuessed.indexOf(letter) >= 0;
 
       return (
-        <GameButton
+        <LetterButton
           letter={letter}
           key={letter}
           makeGuess={makeGuess}
@@ -48,10 +47,15 @@ class GameScreen extends Component {
   }
 
   render() {
-    const { numberOfGuesses } = this.props;
+    const { numberOfGuesses, startNewGame } = this.props;
 
     return (
       <div>
+        <div className="row">
+          <div className="col s12">
+            <NewGameButton startNewGame={startNewGame} />
+          </div>
+        </div>
         <div className="row">
           <div className="col s12">
             <div className="word-tile-wrap">{this.renderWordTiles()}</div>
@@ -63,7 +67,7 @@ class GameScreen extends Component {
             <div className="btn">{numberOfGuesses}</div>
           </div>
         </div>
-        <div className="row">{this.renderGameButtons()}</div>
+        <div className="row">{this.renderLetterButtons()}</div>
       </div>
     );
   }

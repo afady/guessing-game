@@ -1,4 +1,9 @@
-import { SETUP_GAME, MAKE_GUESS, CHECK_FOR_ENDGAME } from '../actions/types';
+import {
+  SETUP_GAME,
+  MAKE_GUESS,
+  CHECK_FOR_ENDGAME,
+  START_NEW_GAME
+} from '../actions/types';
 
 const initialState = {
   wordToGuess: 'TESTER',
@@ -39,7 +44,6 @@ export default function(state = initialState, action) {
     }
 
     case CHECK_FOR_ENDGAME: {
-      // check if word has been guessed
       const { lettersGuessed, wordToGuess, numberOfGuesses } = state;
 
       let hasWinner = true;
@@ -59,6 +63,10 @@ export default function(state = initialState, action) {
         hasWinner,
         gameOver
       };
+    }
+
+    case START_NEW_GAME: {
+      return { initialState };
     }
 
     default:
