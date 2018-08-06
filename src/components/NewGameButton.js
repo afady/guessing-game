@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-export default ({ startNewGame }) => {
+const NewGameButton = ({ startNewGame }) => {
   return (
     <button
       onClick={() => {
@@ -12,3 +14,8 @@ export default ({ startNewGame }) => {
     </button>
   );
 };
+
+export default connect(
+  null,
+  actions
+)(NewGameButton);

@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NewGameForm from './NewGameForm';
 import GameScreen from './GameScreen';
+import ResultsScreen from './ResultsScreen';
 
 class App extends Component {
   renderScreen() {
     const { isPlaying, gameOver } = this.props;
 
     if (gameOver) {
-      return <div>Game over!</div>;
+      return (
+        <div>
+          <ResultsScreen />
+        </div>
+      );
     }
 
     if (isPlaying) {

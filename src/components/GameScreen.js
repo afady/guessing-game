@@ -47,13 +47,13 @@ class GameScreen extends Component {
   }
 
   render() {
-    const { numberOfGuesses, startNewGame } = this.props;
+    const { numberOfGuesses } = this.props;
 
     return (
       <div>
         <div className="row">
           <div className="col s12">
-            <NewGameButton startNewGame={startNewGame} />
+            <NewGameButton />
           </div>
         </div>
         <div className="row">
