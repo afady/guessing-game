@@ -6,12 +6,15 @@ import ResultsScreen from './ResultsScreen';
 
 class App extends Component {
   renderScreen() {
-    const { isPlaying, gameOver } = this.props;
+    const { isPlaying, gameOver, hasWinner, wordToGuess } = this.props;
 
     if (gameOver) {
       return (
         <div>
-          <ResultsScreen />
+          <ResultsScreen
+            wordToGuess={wordToGuess}
+            winOrLose={hasWinner ? 'Win' : 'Lose'}
+          />
         </div>
       );
     }
@@ -32,7 +35,8 @@ function mapStateToProps(state) {
   return {
     isPlaying: state.game.isPlaying,
     gameOver: state.game.gameOver,
-    hasWinner: state.game.hasWinner
+    hasWinner: state.game.hasWinner,
+    wordToGuess: state.game.wordToGuess
   };
 }
 
