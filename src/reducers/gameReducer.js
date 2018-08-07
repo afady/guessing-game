@@ -49,7 +49,7 @@ export default function(state = initialState, action) {
       let hasWinner = true;
 
       wordToGuess.split('').map(letter => {
-        if (lettersGuessed.indexOf(letter) < 0) {
+        if (letter !== ' ' && lettersGuessed.indexOf(letter) < 0) {
           hasWinner = false;
         }
 

@@ -44,6 +44,7 @@ class NewGameForm extends Component {
       <div className="row">
         <form
           className="col s12"
+          style={{ maxWidth: 400 }}
           onSubmit={this.props.handleSubmit(this.props.setupGame)}
         >
           <div className="row">{this.renderFields()}</div>
