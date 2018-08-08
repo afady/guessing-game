@@ -25,12 +25,11 @@ class GameScreen extends Component {
     // only accept A-Z
     if (keyCode >= 65 && keyCode <= 90) {
       this.props.makeGuess(String.fromCharCode(keyCode));
-      this.props.checkForEndGame();
     }
   }
 
   renderLetterButtons() {
-    const { makeGuess, lettersGuessed, checkForEndGame } = this.props;
+    const { makeGuess, lettersGuessed } = this.props;
 
     return alphabet.map(letter => {
       let hasBeenGuessed = lettersGuessed.indexOf(letter) >= 0;
@@ -39,9 +38,8 @@ class GameScreen extends Component {
         <LetterButton
           letter={letter}
           key={letter}
-          makeGuess={makeGuess}
-          checkForEndGame={checkForEndGame}
           disabled={hasBeenGuessed}
+          makeGuess={makeGuess}
         />
       );
     });

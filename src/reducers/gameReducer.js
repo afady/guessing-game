@@ -1,9 +1,4 @@
-import {
-  SETUP_GAME,
-  MAKE_GUESS,
-  CHECK_FOR_ENDGAME,
-  START_NEW_GAME
-} from '../actions/types';
+import { SETUP_GAME, MAKE_GUESS, START_NEW_GAME } from '../actions/types';
 
 const initialState = {
   wordToGuess: '',
@@ -16,6 +11,10 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case START_NEW_GAME: {
+      return initialState;
+    }
+
     case SETUP_GAME: {
       return {
         ...state,
@@ -28,26 +27,16 @@ export default function(state = initialState, action) {
     case MAKE_GUESS: {
       const letter = action.payload;
       const { wordToGuess } = state;
-
       let { numberOfGuesses } = state;
+      let lettersGuessed = [...state.lettersGuessed, letter];
 
       // if guess was incorrect, decrement number of guesses
       if (wordToGuess.split('').indexOf(letter) < 0) {
         numberOfGuesses--;
       }
 
-      return {
-        ...state,
-        lettersGuessed: [...state.lettersGuessed, letter],
-        numberOfGuesses
-      };
-    }
-
-    case CHECK_FOR_ENDGAME: {
-      const { lettersGuessed, wordToGuess, numberOfGuesses } = state;
-
+      // check if user has guessed the entire word
       let hasWinner = true;
-
       wordToGuess.split('').map(letter => {
         if (letter !== ' ' && lettersGuessed.indexOf(letter) < 0) {
           hasWinner = false;
@@ -60,13 +49,11 @@ export default function(state = initialState, action) {
 
       return {
         ...state,
-        hasWinner,
-        gameOver
+        lettersGuessed,
+        numberOfGuesses,
+        gameOver,
+        hasWinner
       };
-    }
-
-    case START_NEW_GAME: {
-      return initialState;
     }
 
     default:
