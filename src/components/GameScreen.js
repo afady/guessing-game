@@ -30,7 +30,6 @@ class GameScreen extends Component {
 
   renderWordTiles() {
     const { lettersGuessed } = this.props;
-    console.log(this.wordToGuessArray);
     return this.wordToGuessArray.map((letter, index) => {
       // players do not have to guess spaces
       if (letter === ' ') {
