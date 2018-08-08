@@ -6,8 +6,27 @@ import LetterButton from './LetterButton';
 import NewGameButton from './NewGameButton';
 
 class GameScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this._handleKeyDown = this._handleKeyDown.bind(this);
+  }
   componentWillMount() {
     this.wordToGuessArray = this.props.wordToGuess.split('');
+    document.addEventListener('keydown', this._handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this._handleKeyDown);
+  }
+
+  _handleKeyDown(event) {
+    const { keyCode } = event;
+    // only accept A-Z
+    if (keyCode >= 65 && keyCode <= 90) {
+      this.props.makeGuess(String.fromCharCode(keyCode));
+      this.props.checkForEndGame();
+    }
   }
 
   renderLetterButtons() {
