@@ -8,9 +8,9 @@ import NewGameButton from './NewGameButton';
 class GameScreen extends Component {
   constructor(props) {
     super(props);
-
     this._handleKeyDown = this._handleKeyDown.bind(this);
   }
+
   componentWillMount() {
     this.wordToGuessArray = this.props.wordToGuess.split('');
     document.addEventListener('keydown', this._handleKeyDown);
@@ -22,9 +22,11 @@ class GameScreen extends Component {
 
   _handleKeyDown(event) {
     const { keyCode } = event;
-    // only accept A-Z
-    if (keyCode >= 65 && keyCode <= 90) {
-      this.props.makeGuess(String.fromCharCode(keyCode));
+    const { lettersGuessed } = this.props;
+    const letter = String.fromCharCode(keyCode);
+    // only accept A-Z and hasn't already been guessed
+    if (keyCode >= 65 && keyCode <= 90 && lettersGuessed.indexOf(letter) >= 0) {
+      this.props.makeGuess(letter);
     }
   }
 
