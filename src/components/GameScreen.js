@@ -45,7 +45,7 @@ class GameScreen extends Component {
       }
 
       let returnChar = letter;
-
+      // if the letter hasn't been guessed, return an underscore
       if (lettersGuessed.indexOf(letter) < 0) {
         returnChar = '_';
       }
