@@ -25,7 +25,7 @@ class GameScreen extends Component {
     const { lettersGuessed } = this.props;
     const letter = String.fromCharCode(keyCode);
     // only accept A-Z and hasn't already been guessed
-    if (keyCode >= 65 && keyCode <= 90 && lettersGuessed.indexOf(letter) >= 0) {
+    if (keyCode >= 65 && keyCode <= 90 && lettersGuessed.indexOf(letter) < 0) {
       this.props.makeGuess(letter);
     }
   }
