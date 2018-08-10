@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import NewGameForm from './NewGameForm';
 import GameScreen from './GameScreen';
 import ResultsScreen from './ResultsScreen';
+import Header from './Header';
+import Footer from './Footer';
 
 class App extends Component {
   renderScreen() {
@@ -27,7 +29,13 @@ class App extends Component {
   }
 
   render() {
-    return <div className="container">{this.renderScreen()}</div>;
+    return (
+      <div className="app-wrapper">
+        <Header />
+        <div className="container main-content">{this.renderScreen()}</div>
+        <Footer />
+      </div>
+    );
   }
 }
 
