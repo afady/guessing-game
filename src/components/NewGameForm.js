@@ -48,10 +48,7 @@ class NewGameForm extends Component {
           onSubmit={this.props.handleSubmit(this.props.setupGame)}
         >
           <div className="row">{this.renderFields()}</div>
-          <button
-            type="submit"
-            className="waves-effect waves-light btn-large blue-grey"
-          >
+          <button type="submit" className="waves-effect waves-light btn">
             Start Game
           </button>
         </form>

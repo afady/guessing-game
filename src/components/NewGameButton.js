@@ -8,7 +8,7 @@ const NewGameButton = ({ startNewGame }) => {
       onClick={() => {
         startNewGame();
       }}
-      className="waves-effect waves-light btn blue-grey"
+      className="waves-effect waves-light btn"
     >
       New Game
     </button>
