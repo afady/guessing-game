@@ -6,7 +6,11 @@ export default () => {
       <div className="footer-copyright">
         <div className="container">
           View Source on&nbsp;
-          <a href="//github.com/afady/guessing-game" target="_blank">
+          <a
+            href="//github.com/afady/guessing-game"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GitHub
           </a>
         </div>
