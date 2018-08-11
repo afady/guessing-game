@@ -49,29 +49,20 @@ class GameScreen extends Component {
   renderWordTiles() {
     const { lettersGuessed } = this.props;
     return this.wordToGuessArray.map((letter, index) => {
-      // players do not have to guess spaces
-      if (letter === ' ') {
-        return (
-          <a
-            className="btn-large word-tile"
-            key={index}
-            style={{ visibility: 'hidden' }}
-          >
-            {letter}
-          </a>
-        );
-      }
-
       let returnChar = letter;
-      // if the letter hasn't been guessed, return an underscore
-      if (lettersGuessed.indexOf(letter) < 0) {
+
+      if (lettersGuessed.indexOf(letter) < 0 && letter !== ' ') {
         returnChar = '_';
       }
 
       return (
-        <a className="btn-large word-tile blue darken-2" key={index}>
+        <span
+          className="word-tile"
+          key={index}
+          style={letter === ' ' ? { visibility: 'hidden' } : {}}
+        >
           {returnChar}
-        </a>
+        </span>
       );
     });
   }
@@ -89,7 +80,12 @@ class GameScreen extends Component {
         <div className="row">
           <div className="col s12" style={{ textAlign: 'center' }}>
             <strong>Guesses left: </strong>
-            <div className="btn">{numberOfGuesses}</div>
+            <div
+              className="btn"
+              style={numberOfGuesses <= 3 ? { backgroundColor: 'red' } : {}}
+            >
+              {numberOfGuesses}
+            </div>
           </div>
         </div>
         <div className="row">{this.renderLetterButtons()}</div>

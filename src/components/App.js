@@ -12,12 +12,10 @@ class App extends Component {
 
     if (gameOver) {
       return (
-        <div>
-          <ResultsScreen
-            wordToGuess={wordToGuess}
-            winOrLose={hasWinner ? 'Win' : 'Lose'}
-          />
-        </div>
+        <ResultsScreen
+          wordToGuess={wordToGuess}
+          winOrLose={hasWinner ? 'Win' : 'Lose'}
+        />
       );
     }
 

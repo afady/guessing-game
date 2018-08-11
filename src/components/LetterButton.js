@@ -7,7 +7,7 @@ export default ({ letter, disabled, makeGuess }) => {
         onClick={() => {
           makeGuess(letter);
         }}
-        className="waves-effect waves-light btn blue-grey letter-btn"
+        className="waves-effect waves-light btn letter-btn"
         disabled={disabled}
       >
         {letter}
