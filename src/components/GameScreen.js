@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { alphabet } from '../utils/constants';
 import LetterButton from './LetterButton';
-import NewGameButton from './NewGameButton';
 
 class GameScreen extends Component {
   constructor(props) {
@@ -82,11 +81,6 @@ class GameScreen extends Component {
 
     return (
       <div>
-        <div className="row">
-          <div className="col s12">
-            <NewGameButton />
-          </div>
-        </div>
         <div className="row">
           <div className="col s12">
             <div className="word-tile-wrap">{this.renderWordTiles()}</div>

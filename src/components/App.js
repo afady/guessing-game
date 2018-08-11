@@ -29,9 +29,11 @@ class App extends Component {
   }
 
   render() {
+    const { isPlaying } = this.props;
+
     return (
       <div className="app-wrapper">
-        <Header />
+        <Header isPlaying={isPlaying} />
         <div className="container main-content">{this.renderScreen()}</div>
         <Footer />
       </div>

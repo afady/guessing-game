@@ -1,5 +1,4 @@
 import React from 'react';
-import NewGameButton from './NewGameButton';
 
 export default ({ winOrLose, wordToGuess }) => {
   return (
@@ -8,7 +7,6 @@ export default ({ winOrLose, wordToGuess }) => {
       <div>
         The word was: <strong>{wordToGuess}</strong>
       </div>
-      <NewGameButton />
     </div>
   );
 };
