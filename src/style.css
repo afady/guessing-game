@@ -10,13 +10,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-<<<<<<< HEAD
-=======
 }
 span.brand-logo {
   left: 0;
   transform: none;
->>>>>>> Responsive UI updates
 }
 .word-tile-wrap {
   text-align: center;
@@ -49,8 +46,6 @@ nav .brand-logo {
   font-size: 200%;
   font-weight: bold;
 }
-<<<<<<< HEAD
-=======
 
 @media (min-width: 480px) {
   .word-tile {
@@ -58,4 +53,3 @@ nav .brand-logo {
     margin: 6px;
   }
 }
->>>>>>> Responsive UI updates
